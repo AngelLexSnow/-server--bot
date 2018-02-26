@@ -38,11 +38,7 @@ kernel.on ('ready',() => {
         kernel.user.setStatus('dnd')
         kernel.user.setPresence({game:{name: 'Tom Walker - Album',type: 2}});
         console.log(modif_horaie_server_heure >= "23");
-        break;
-    default:
-        kernel.user.setStatus('idle')
-        kernel.user.setPresence({game:{name: 'Oberser l\'humanité',type: 0}});
-        console.log(modif_horaie_server_heure >= "00");    
+        
 }});
 
 // Fonction 'message', commandes ...
