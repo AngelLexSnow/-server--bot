@@ -125,4 +125,4 @@ kernel.on('message', message => {
 });
 
 // Token login
-kernel.login('process.env.TOKEN');
+kernel.login(process.env.TOKEN);
