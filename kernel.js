@@ -65,7 +65,7 @@ kernel.on('message', message => {
     }
     // Commande qui donne l'heure 
     if (msg === prefix + 'time') {
-        sender.send(`Il est actuellement : ${modif_horaie_server_heure}:${modif_horaie_server_minute}:${modif_horaie_server_seconde} :timer:`);
+        sender.send(`Il est actuellement : ${heure}:${minute}:${seconde} :timer:`);
     }
     // Commande de traduction ...
     if (msg.startsWith(prefix + 'translate')) {
