@@ -23,7 +23,6 @@ const prefix = '!';
 
 // Fonction de lancement, status du bot ...
 kernel.on ('ready',() => {
-    message.channel.send(modif_horaie_server_heure >= "18");
     switch(modif_horaie_server_heure) {
     case (modif_horaie_server_heure >= "06"):
         kernel.user.setStatus('online')
