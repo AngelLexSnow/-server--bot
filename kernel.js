@@ -14,9 +14,9 @@ var heure =date.getHours();
 var minute=date.getMinutes();
 var seconde=date.getSeconds();
 // Modification de l'heure par rapport au server d'hébergement
-let modif_horaie_server_heure = (heure + 3);
-let modif_horaie_server_minute = (minute - 25);
-let modif_horaie_server_seconde = (seconde + 5);
+let modif_horaie_server_heure = (heure + 1);
+//let modif_horaie_server_minute = (minute - 25);
+//let modif_horaie_server_seconde = (seconde + 5);
 
 // Définition du prefix (avant toute commande) ...
 const prefix = '!';
@@ -65,7 +65,7 @@ kernel.on('message', message => {
     }
     // Commande qui donne l'heure 
     if (msg === prefix + 'time') {
-        sender.send(`Il est actuellement : ${heure}:${minute}:${seconde} :timer:`);
+        sender.send(`Il est actuellement : ${modif_horaie_server_heure}:${minute}:${seconde} :timer:`);
     }
     // Commande de traduction ...
     if (msg.startsWith(prefix + 'translate')) {
