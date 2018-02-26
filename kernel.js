@@ -23,22 +23,24 @@ const prefix = '!';
 
 // Fonction de lancement, status du bot ...
 kernel.on ('ready',() => {
-    if (modif_horaie_server_heure >= '06'){
-    kernel.user.setStatus('online')
-    kernel.user.setPresence({game:{name: 'Ferder - Album',type: 2}});
-} else if (modif_horaie_server_heure >= '18') {
-    kernel.user.setStatus('online')
-    kernel.user.setPresence({game:{name: 'La voie du destin',type: 0}});
-} else if (modif_horaie_server_heure >= '23'){
-    kernel.user.setStatus('dnd')
-    kernel.user.setPresence({game:{name: 'Tom Walker - Album',type: 2}});
-} else {
-    kernel.user.setStatus('idle')
-    kernel.user.setPresence({game:{name: 'Oberser l\'humanité',type: 0}});
-}
-    console.log('Kernel is work !');
-    console.log(modif_horaie_server_heure);
-});
+    switch(modif_horaie_server_heure) {
+    case (modif_horaie_server_heure >= 06):
+        kernel.user.setStatus('online')
+        kernel.user.setPresence({game:{name: 'Ferder - Album',type: 2}});
+        break;
+    case (modif_horaie_server_heure >= 18):
+         kernel.user.setStatus('online')
+         kernel.user.setPresence({game:{name: 'La voie du destin',type: 0}});
+        break;
+    case (modif_horaie_server_heure >= 23):
+        kernel.user.setStatus('dnd')
+        kernel.user.setPresence({game:{name: 'Tom Walker - Album',type: 2}});
+        break;
+    default:
+        kernel.user.setStatus('idle')
+        kernel.user.setPresence({game:{name: 'Oberser l\'humanité',type: 0}});
+}}
+ );
 
 // Fonction 'message', commandes ...
 kernel.on('message', message => {
