@@ -14,9 +14,9 @@ var heure =date.getHours();
 var minute=date.getMinutes();
 var seconde=date.getSeconds();
 // Modification de l'heure par rapport au server d'hébergement
-let modif_horaie_server_heure = (heure + 2);
-let modif_horaie_server_minute = (minute - 24);
-let modif_horaie_server_seconde = (seconde + 19);
+let modif_horaie_server_heure = (heure + 3);
+let modif_horaie_server_minute = (minute - 25);
+let modif_horaie_server_seconde = (seconde + 5);
 
 // Définition du prefix (avant toute commande) ...
 const prefix = '!';
@@ -97,7 +97,7 @@ kernel.on('message', message => {
             return;
           }
           const fetched = await message.channel.fetchMessages({limit: args[0]});
-          console.log('purge : '+ fetched.size + ' message en cours de suppression !');
+         
           message.channel.bulkDelete(fetched)
             .catch(error => message.channel.send('Erreur: ${error}'));
         }
@@ -109,7 +109,7 @@ kernel.on('message', message => {
     
         if (!voiceChannel) {
           return message.reply('Vous n\'êtes pas dans un channel vocal ! :rolling_eyes: ');
-          console.log('play : channel vocal X !')
+        
         }
     
         voiceChannel.join()
@@ -117,9 +117,9 @@ kernel.on('message', message => {
           const stream = ytdl(args[0], {filter: 'audioonly'});
           const dispatcher = connection.playStream(stream);
           dispatcher.on('end', () => {
-            console.log('play : start !');
+           
             voiceChannel.leave()
-            console.log('play : stop !');
+          
           })})};
 
 });
