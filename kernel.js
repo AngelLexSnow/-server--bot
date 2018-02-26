@@ -25,7 +25,7 @@ const prefix = '!';
 kernel.on ('ready',() => {
     switch(modif_horaie_server_heure) {
     case (modif_horaie_server_heure >= "06"):
-        kernel.user.setStatus('online')
+        kernel.user.setStatus('idle')
         kernel.user.setPresence({game:{name: 'Ferder - Album',type: 2}});
         console.log(modif_horaie_server_heure >= "06");
         break;
