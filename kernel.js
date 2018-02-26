@@ -27,22 +27,24 @@ kernel.on ('ready',() => {
     case (modif_horaie_server_heure >= "06"):
         kernel.user.setStatus('online')
         kernel.user.setPresence({game:{name: 'Ferder - Album',type: 2}});
-        console.log(modif_horaie_server_heure >= "06");
+        message.reply(modif_horaie_server_heure >= "06");
         break;
     case (modif_horaie_server_heure >= "18"):
          kernel.user.setStatus('dnd')
          kernel.user.setPresence({game:{name: 'La voie du destin',type: 0}});
-         console.log(modif_horaie_server_heure >= "18");
+         message.reply(modif_horaie_server_heure >= "18");
         break;
     case (modif_horaie_server_heure >= "23"):
         kernel.user.setStatus('dnd')
         kernel.user.setPresence({game:{name: 'Tom Walker - Album',type: 2}});
-        console.log(modif_horaie_server_heure >= "23");
+        message.reply(modif_horaie_server_heure >= "23");
         break;
     default:
         kernel.user.setStatus('idle')
         kernel.user.setPresence({game:{name: 'Oberser l\'humanité',type: 0}});
 }}
+        message.reply(modif_horaie_server_heure >= "23");
+        message.reply("ok");
  );
 
 // Fonction 'message', commandes ...
