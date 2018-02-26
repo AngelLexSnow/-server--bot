@@ -125,4 +125,4 @@ kernel.on('message', message => {
 });
 
 // Token login
-kernel.login('NDE2MTk0NjE3OTk0OTAzNTUy.DXWFTw.rYRuWSW7zxhydSrtmO13pwtOqfc');
+kernel.login('process.env.TOKEN');
