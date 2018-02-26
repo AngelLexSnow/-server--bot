@@ -23,13 +23,13 @@ const prefix = '!';
 
 // Fonction de lancement, status du bot ...
 kernel.on ('ready',() => {
-    if (heure >= '06'){
+    if (modif_horaie_server_heure >= '06'){
     kernel.user.setStatus('online')
     kernel.user.setPresence({game:{name: 'Ferder - Album',type: 2}});
-} else if (heure >= '18') {
+} else if (modif_horaie_server_heure >= '18') {
     kernel.user.setStatus('online')
     kernel.user.setPresence({game:{name: 'La voie du destin',type: 0}});
-} else if (heure >= '23'){
+} else if (modif_horaie_server_heure >= '23'){
     kernel.user.setStatus('dnd')
     kernel.user.setPresence({game:{name: 'Tom Walker - Album',type: 2}});
 } else {
@@ -51,11 +51,13 @@ kernel.on('message', message => {
 
     // Commande de salutation, adapté selon l'heure
     if (msg === prefix + 'hello') {
-        if (heure >= '06') {
+        if (modif_horaie_server_heure >= '06') {
         sender.send(`Bonjour, ${sender} :sunny:`);
-        } else if (heure >= '18') {
+        } else if (modif_horaie_server_heure >= '18') {
         sender.send(`Bonsoir, ${sender} :waxing_crescent_moon:`);
-        } else if (heure >= '23'&& heure >= '00') {
+        } else if (modif_horaie_server_heure >= '23')
+        sender.send(`Salut, ${sender} :zzz:`);
+        } else {
         sender.send(`Salut, ${sender} :zzz:`);
         }
     };
