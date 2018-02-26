@@ -55,7 +55,7 @@ kernel.on('message', message => {
         sender.send(`Bonjour, ${sender} :sunny:`);
         } else if (modif_horaie_server_heure >= '18') {
         sender.send(`Bonsoir, ${sender} :waxing_crescent_moon:`);
-        } else if (modif_horaie_server_heure >= '23')
+        } else if (modif_horaie_server_heure >= '23') {
         sender.send(`Salut, ${sender} :zzz:`);
         } else {
         sender.send(`Salut, ${sender} :zzz:`);
