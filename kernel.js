@@ -37,6 +37,7 @@ kernel.on ('ready',() => {
     kernel.user.setPresence({game:{name: 'Oberser l\'humanité',type: 0}});
 }
     console.log('Kernel is work !');
+    console.log(modif_horaie_server_heure);
 });
 
 // Fonction 'message', commandes ...
