@@ -1,45 +1,51 @@
 // Définition des fonctions que l'on utilise ...
-const Discord = require('discord.js');
-const kernel = new Discord.Client();
-// Définition de l'utlisation fonction ydl-core & fs
 const fs = require('fs');
 const ytdl = require('ytdl-core');
+const Discord = require('discord.js');
+const Music = require('discord.js-musicbot-addon');
+const kernel = new Discord.Client();
+// Définition de l'utlisation fonction ydl-core & fs
+const token = (process.env.TOKEN) // Recommended to load from json file.
 // Défnition de l'utilisation fonction deepL
 const { translate, detectLanguage, wordAlternatives, translateWithAlternatives } = require('deepl-translator');
-
 
 // Définition du temps ...
 var date = new Date();
 var heure =date.getHours();
 var minute=date.getMinutes();
 var seconde=date.getSeconds();
+
 // Modification de l'heure par rapport au server d'hébergement
-let modif_horaie_server_heure = (heure + 1);
+//let modif_horaie_server_heure = (heure);
 //let modif_horaie_server_minute = (minute - 25);
 //let modif_horaie_server_seconde = (seconde + 5);
 
 // Définition du prefix (avant toute commande) ...
 const prefix = '!';
 
+const music = new Music(kernel, {
+    youtubeKey: 'AIzaSyD1q9yBpOElSYO7ffxjpNDPxkrWgMj5XDM',
+    prefix: "!",
+    maxQueueSize: "100",
+    ownerOverMember: true,
+    botOwner: '215784113666392065',
+    defVolume: '50',
+    clearInvoker: true,
+
+  });
+   
 // Fonction de lancement, status du bot ...
 kernel.on ('ready',() => {
-    switch(modif_horaie_server_heure) {
-    case (modif_horaie_server_heure >= "06"):
+    if (heure >= '18'){
         kernel.user.setStatus('dnd')
-        kernel.user.setPresence({game:{name: 'Ferder - Album',type: 2}});
-        console.log(modif_horaie_server_heure >= "06");
-        break;
-    case (modif_horaie_server_heure >= "18"):
-        kernel.user.setStatus('dnd')
-        kernel.user.setPresence({game:{name: 'La voie du destin',type: 0}});
-        console.log(modif_horaie_server_heure >= "18");
-        break;
-    case (modif_horaie_server_heure >= "23"):
-        kernel.user.setStatus('dnd')
-        kernel.user.setPresence({game:{name: 'Tom Walker - Album',type: 2}});
-        console.log(modif_horaie_server_heure >= "23");
+        kernel.user.setPresence({game:{name: 'Apprendre de tes données !',type: 0}});
+    } else {
+        kernel.user.setStatus('online')
+        kernel.user.setPresence({game:{name: 'Apprendre la vie <3',type: 0}});
+    }
+        console.log('Kernel is work !');
         
-}});
+});
 
 // Fonction 'message', commandes ...
 kernel.on('message', message => {
@@ -49,18 +55,12 @@ kernel.on('message', message => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
 
-
-
     // Commande de salutation, adapté selon l'heure
     if (msg === prefix + 'hello') {
-        if (modif_horaie_server_heure >= '06') {
-        sender.send(`Bonjour, ${sender} :sunny:`);
-        } else if (modif_horaie_server_heure >= '18') {
-        sender.send(`Bonsoir, ${sender} :waxing_crescent_moon:`);
-        } else if (modif_horaie_server_heure >= '23') {
-        sender.send(`Salut, ${sender} :zzz:`);
+        if (heure >= '18'){
+            sender.send(`Bonsoir, ${sender} :crescent_moon:`);
         } else {
-        sender.send(`Salut, ${sender} :zzz:`);
+            sender.send(`Bonjour, ${sender} :sunny:`);
         }
     };
     // Commande de remerciement...
@@ -69,7 +69,7 @@ kernel.on('message', message => {
     }
     // Commande qui donne l'heure 
     if (msg === prefix + 'time') {
-        sender.send(`Il est actuellement : ${modif_horaie_server_heure}:${minute}:${seconde} :timer:`);
+        sender.send(`Il est actuellement : ${heure}:${minute}:${seconde} :timer:`);
     }
     // Commande de traduction ...
     if (msg.startsWith(prefix + 'translate')) {
@@ -107,26 +107,8 @@ kernel.on('message', message => {
         }
         purge();};
       //Commande play
-      if (msg.startsWith(prefix + 'play')) {
-
-        const voiceChannel = message.member.voiceChannel;
-    
-        if (!voiceChannel) {
-          return message.reply('Vous n\'êtes pas dans un channel vocal ! :rolling_eyes: ');
-        
-        }
-    
-        voiceChannel.join()
-        .then(connection => {
-          const stream = ytdl(args[0], {filter: 'audioonly'});
-          const dispatcher = connection.playStream(stream);
-          dispatcher.on('end', () => {
-           
-            voiceChannel.leave()
-          
-          })})};
 
 });
 
 // Token login
-kernel.login(process.env.TOKEN);
+kernel.login(token);
