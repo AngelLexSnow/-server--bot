@@ -58,9 +58,7 @@ kernel.on('message', message => {
     // Commande de salutation, adapté selon l'heure
     if (msg === prefix + 'hello') {
         if (heure >= '18'){
-            sender.send(`Bonsoir, ${sender} :crescent_moon:`);
-        } else {
-            sender.send(`Bonjour, ${sender} :sunny:`);
+            sender.send(`Salut, ${sender} .`);
         }
     };
     // Commande de remerciement...
@@ -69,7 +67,7 @@ kernel.on('message', message => {
     }
     // Commande qui donne l'heure 
     if (msg === prefix + 'time') {
-        sender.send(`Il est actuellement : ${heure}:${minute}:${seconde} :timer:`);
+        sender.send(`Désolé ${sender} je ne peux pas vous donner l'heure, car je change de lieux toutes les heures.`);
     }
     // Commande de traduction ...
     if (msg.startsWith(prefix + 'translate')) {
