@@ -68,7 +68,7 @@ kernel.on('message', message => {
        weekday: "long", year: "numeric", month: "short",
        day: "numeric", hour: "2-digit", minute: "2-digit"
        }
-        sender.send(date.toLocaleTimeString("fr-FRA"));
+        sender.send(date.toLocaleTimeString("fr-FRA", options);
     }
     // Commande de traduction ...
     if (msg.startsWith(prefix + 'translate')) {
