@@ -63,7 +63,7 @@ kernel.on('message', message => {
     // Commande qui donne l'heure 
     if (msg === prefix + 'time') {
         sender.send(`Désolé ${sender} je ne peux pas vous donner l'heure, car je change de lieux toutes les heures.`);
-        var date = new Date(Date.UTC(2018, mois, jour, heure, minute, seconde));
+        var date = new Date(Date.UTC(2018, 1, 1, 14, 0, 0));
         var options = {
        weekday: "long", year: "numeric", month: "short",
        day: "numeric", hour: "2-digit", minute: "2-digit"
