@@ -11,9 +11,11 @@ const { translate, detectLanguage, wordAlternatives, translateWithAlternatives }
 
 // Définition du temps ...
 var date = new Date();
-var heure =date.getHours();
-var minute=date.getMinutes();
-var seconde=date.getSeconds();
+var jour = dateDay();
+var mois = (date.getMonth()+1);
+var heure = date.getHours();
+var minute = date.getMinutes();
+var seconde = date.getSeconds();
 
 // Modification de l'heure par rapport au server d'hébergement
 //let modif_horaie_server_heure = (heure);
@@ -38,10 +40,10 @@ const music = new Music(kernel, {
 kernel.on ('ready',() => {
     if (heure >= '18'){
         kernel.user.setStatus('afk')
-        kernel.user.setPresence({game:{name: 'Dormir paisiblement :zzz: ',type: 0}});
+        kernel.user.setPresence({game:{name: 'Dormir paisiblement',type: 0}});
     } else {
         kernel.user.setStatus('online')
-        kernel.user.setPresence({game:{name: 'Étudie le monde :earth_americas: ',type: 0}});
+        kernel.user.setPresence({game:{name: 'Étudie le monde',type: 0}});
     }
         console.log('Kernel is work !');
         
@@ -68,7 +70,7 @@ kernel.on('message', message => {
     // Commande qui donne l'heure 
     if (msg === prefix + 'time') {
         sender.send(`Désolé ${sender} je ne peux pas vous donner l'heure, car je change de lieux toutes les heures.`);
-        var date = new Date(Date.UTC(2013, 1, 1, 14, 0, 0));
+        var date = new Date(Date.UTC(2018, mois, jour, heure, minute, seconde));
         var options = {
        weekday: "long", year: "numeric", month: "short",
        day: "numeric", hour: "2-digit", minute: "2-digit"
