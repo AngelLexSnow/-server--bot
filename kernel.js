@@ -11,19 +11,12 @@ const { translate, detectLanguage, wordAlternatives, translateWithAlternatives }
 
 // Définition du temps ...
 var date = new Date();
-var jour = (date.getDay()+2);
+var jour = date.getDay();
 var mois = date.getMonth();
-var heure = (date.getHours()+2);
+var heure = date.getHours();
 var minute = date.getMinutes();
 var seconde = date.getSeconds();
 
-// Modification de l'heure par rapport au server d'hébergement
-//let modif_horaie_server_heure = (heure);
-//let modif_horaie_server_minute = (minute - 25);
-//let modif_horaie_server_seconde = (seconde + 5);
-
-// Définition du prefix (avant toute commande) ...
-const prefix = '!';
 
 const music = new Music(kernel, {
     youtubeKey: 'AIzaSyD1q9yBpOElSYO7ffxjpNDPxkrWgMj5XDM',
@@ -75,7 +68,7 @@ kernel.on('message', message => {
        weekday: "long", year: "numeric", month: "short",
        day: "numeric", hour: "2-digit", minute: "2-digit"
        }
-        sender.send(date.toLocaleTimeString("en-us", options));
+        sender.send(date.toLocaleTimeString("fr-fra"));
     }
     // Commande de traduction ...
     if (msg.startsWith(prefix + 'translate')) {
