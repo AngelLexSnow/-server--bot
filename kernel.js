@@ -11,9 +11,9 @@ const { translate, detectLanguage, wordAlternatives, translateWithAlternatives }
 
 // Définition du temps ...
 var date = new Date();
-var jour = date.getDay();
-var mois = (date.getMonth()+1);
-var heure = date.getHours();
+var jour = (date.getDay()+2);
+var mois = date.getMonth();
+var heure = (date.getHours()+2);
 var minute = date.getMinutes();
 var seconde = date.getSeconds();
 
