@@ -37,11 +37,11 @@ const music = new Music(kernel, {
 // Fonction de lancement, status du bot ...
 kernel.on ('ready',() => {
     if (heure >= '18'){
-        kernel.user.setStatus('dnd')
-        kernel.user.setPresence({game:{name: 'Apprendre de tes données !',type: 0}});
+        kernel.user.setStatus('afk')
+        kernel.user.setPresence({game:{name: 'Dormir paisiblement :zzz: ',type: 0}});
     } else {
         kernel.user.setStatus('online')
-        kernel.user.setPresence({game:{name: 'Apprendre la vie <3',type: 0}});
+        kernel.user.setPresence({game:{name: 'Étudie le monde :earth_americas: ',type: 0}});
     }
         console.log('Kernel is work !');
         
@@ -68,6 +68,12 @@ kernel.on('message', message => {
     // Commande qui donne l'heure 
     if (msg === prefix + 'time') {
         sender.send(`Désolé ${sender} je ne peux pas vous donner l'heure, car je change de lieux toutes les heures.`);
+        var date = new Date(Date.UTC(2013, 1, 1, 14, 0, 0));
+        var options = {
+       weekday: "long", year: "numeric", month: "short",
+       day: "numeric", hour: "2-digit", minute: "2-digit"
+       }
+        sender.send(date.toLocaleTimeString("en-us", options));
     }
     // Commande de traduction ...
     if (msg.startsWith(prefix + 'translate')) {
