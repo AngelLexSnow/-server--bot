@@ -8,7 +8,7 @@ const kernel = new Discord.Client();
 const token = (process.env.TOKEN) // Recommended to load from json file.
 // Défnition de l'utilisation fonction deepL
 const { translate, detectLanguage, wordAlternatives, translateWithAlternatives } = require('deepl-translator');
-
+prefix = !;
 // Définition du temps ...
 var date = new Date();
 var jour = date.getDay();
